@@ -15,5 +15,5 @@ streamlit==1.48.0
 streamlit_feedback==0.1.4
 twikit==2.3.3
 lancedb==0.24.2
-sentence_transformers=5.1.0
+sentence_transformers==5.1.0
 tiktoken==0.10.0
