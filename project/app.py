@@ -39,7 +39,26 @@ def feedback_cb():
 audio_response = "audio_response.mp3"
 audio_query = "audio_query.wav"
 
-st.image("header.jpg", use_container_width=True)
+# Try to load header image with fallbacks
+from utils.file_utils import get_resource_path
+from pathlib import Path
+
+# Try to find header image
+header_jpg_path = get_resource_path("header.jpg")
+header_jpeg_path = get_resource_path("header.jpeg")
+
+try:
+    # Try jpg first
+    if Path(header_jpg_path).is_file():
+        st.image(header_jpg_path, use_container_width=True)
+    # Then try jpeg
+    elif Path(header_jpeg_path).is_file():
+        st.image(header_jpeg_path, use_container_width=True)
+    else:
+        st.warning(f"Header image not found. Tried paths: {header_jpg_path}, {header_jpeg_path}")
+except Exception as e:
+    st.warning(f"Error loading header image: {str(e)}")
+
 st.title("Pedro Leitão Q&A AI Chatbot")
 
 # Set up LLM choice
