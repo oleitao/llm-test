@@ -82,14 +82,28 @@ def initialize_database():
             for col in tweets_df.columns:
                 if tweets_df[col].dtype == 'object':
                     tweets_df[col] = tweets_df[col].apply(clean_text)
+            
+            # Check what columns are available and generate URL if needed
+            print(f"Available columns: {list(tweets_df.columns)}")
+            
+            def generate_url(row):
+                """Generate Twitter URL from username and tweet_id if URL column doesn't exist"""
+                if 'url' in tweets_df.columns:
+                    return row['url']
+                else:
+                    # Generate URL from tweet_id - assuming username is consistent
+                    username = row.get('username', 'elonmusk')
+                    tweet_id = row.get('tweet_id', '')
+                    return f"https://twitter.com/{username}/status/{tweet_id}"
+            
             data = tweets_df.apply(
                 lambda row: {
                     "tweet_count": row["tweet_count"],
-                    "tweet_id": row["tweet_id"],
+                    "tweet_id": str(row["tweet_id"]),  # Convert to string for consistency
                     "username": row["username"],
                     "text": row["text"],
                     "created_at": row["created at"],
-                    "url": row["url"]
+                    "url": generate_url(row)
                 },
                 axis=1
             ).tolist()
