@@ -9,6 +9,6 @@ def rag(thread_id_state, langgraph_workflow_state, query, llm_choice, api_key):
         return full_response, chunks, urls
 
     except Exception as e:
-        # Return error message, no chunks, and no URLs to indicate failure
+        # Return error message and no URLs to indicate failure
         error_message = f"An error occurred during the RAG process: {e}"
-        return error_message, None, None
+        return error_message, None

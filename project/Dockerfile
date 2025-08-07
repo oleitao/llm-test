@@ -7,17 +7,10 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN python -m pip install --upgrade pip
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Ensure image files and data files have proper permissions
-RUN chmod 644 header.jpg header.jpeg || true
-RUN mkdir -p /app/data && chmod 755 /app/data
-
 EXPOSE ${STREAMLIT_PORT}
 
-# Use shell form to allow environment variable substitution
-CMD streamlit run app.py --server.port=$STREAMLIT_PORT --server.address=0.0.0.0
+CMD ["streamlit", "run", "app.py", "--server.port=${STREAMLIT_PORT}", "--server.address=0.0.0.0"]

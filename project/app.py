@@ -39,26 +39,7 @@ def feedback_cb():
 audio_response = "audio_response.mp3"
 audio_query = "audio_query.wav"
 
-# Try to load header image with fallbacks
-from utils.file_utils import get_resource_path
-from pathlib import Path
-
-# Try to find header image
-header_jpg_path = get_resource_path("header.jpg")
-header_jpeg_path = get_resource_path("header.jpeg")
-
-try:
-    # Try jpg first
-    if Path(header_jpg_path).is_file():
-        st.image(header_jpg_path, use_container_width=True)
-    # Then try jpeg
-    elif Path(header_jpeg_path).is_file():
-        st.image(header_jpeg_path, use_container_width=True)
-    else:
-        st.warning(f"Header image not found. Tried paths: {header_jpg_path}, {header_jpeg_path}")
-except Exception as e:
-    st.warning(f"Error loading header image: {str(e)}")
-
+st.image("header.jpeg", use_container_width=True)
 st.title("Elon Musk Q&A AI Chatbot")
 
 # Set up LLM choice
@@ -70,18 +51,12 @@ llm_choice = st.sidebar.selectbox("Choose LLM Model", llm_options)
 api_key = st.sidebar.text_input(f"Enter {llm_choice} API Key:", type="password")
 
 with st.spinner("Setting up the database. This may take 3-6 minutes..."):
-    try:
-        initialize_database()
-    except Exception as e:
-        st.error(f"Failed to initialize database: {str(e)}")
-        st.info("The application will continue but search functionality may be limited.")
-        import traceback
-        st.expander("Error details").code(traceback.format_exc())
+    initialize_database()
 
 # Initialize chat history and feedback state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-        AIMessage(content="Hello, I am a Elon Musk AI bot. Ask me any transfer/football questions Pedro has tweeted about in the past."),
+        AIMessage(content="Hello, I am a Fabrizo Romano AI bot. Ask me any transfer/football questions Fabrizo has tweeted about in the past."),
     ]
 
 if "audio_bytes" not in st.session_state:
