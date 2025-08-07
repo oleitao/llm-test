@@ -39,7 +39,7 @@ def feedback_cb():
 audio_response = "audio_response.mp3"
 audio_query = "audio_query.wav"
 
-st.image("header.jpeg", use_container_width=True)
+st.image("header.jpg", use_container_width=True)
 st.title("Elon Musk Q&A AI Chatbot")
 
 # Set up LLM choice
