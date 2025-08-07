@@ -13,8 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Ensure image files have proper permissions
+# Ensure image files and data files have proper permissions
 RUN chmod 644 header.jpg header.jpeg || true
+RUN mkdir -p /app/data && chmod 755 /app/data
 
 EXPOSE ${STREAMLIT_PORT}
 

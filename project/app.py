@@ -70,7 +70,13 @@ llm_choice = st.sidebar.selectbox("Choose LLM Model", llm_options)
 api_key = st.sidebar.text_input(f"Enter {llm_choice} API Key:", type="password")
 
 with st.spinner("Setting up the database. This may take 3-6 minutes..."):
-    initialize_database()
+    try:
+        initialize_database()
+    except Exception as e:
+        st.error(f"Failed to initialize database: {str(e)}")
+        st.info("The application will continue but search functionality may be limited.")
+        import traceback
+        st.expander("Error details").code(traceback.format_exc())
 
 # Initialize chat history and feedback state
 if "chat_history" not in st.session_state:
