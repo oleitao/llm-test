@@ -59,7 +59,7 @@ try:
 except Exception as e:
     st.warning(f"Error loading header image: {str(e)}")
 
-st.title("Pedro Leitão Q&A AI Chatbot")
+st.title("Elon Musk Q&A AI Chatbot")
 
 # Set up LLM choice
 llm_options = ["Groq", "OpenAI"]
@@ -81,7 +81,7 @@ with st.spinner("Setting up the database. This may take 3-6 minutes..."):
 # Initialize chat history and feedback state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-        AIMessage(content="Hello, I am a Pedro Leitão AI bot. Ask me any transfer/football questions Pedro has tweeted about in the past."),
+        AIMessage(content="Hello, I am a Elon Musk AI bot. Ask me any transfer/football questions Pedro has tweeted about in the past."),
     ]
 
 if "audio_bytes" not in st.session_state:

@@ -48,7 +48,7 @@ def initialize_database():
             from utils.file_utils import get_resource_path
             
             # Get absolute path for the CSV file
-            csv_path = get_resource_path("data/fabrizioromano_tweets.csv")
+            csv_path = get_resource_path("data/elonmusk_tweets.csv")
             print(f"Loading data from: {csv_path}")
             
             tweets_df = pd.read_csv(csv_path)
@@ -76,9 +76,9 @@ def initialize_database():
             
             # Try to locate the file in different locations
             for path in [
-                "data/fabrizioromano_tweets.csv", 
-                "/app/data/fabrizioromano_tweets.csv",
-                "../data/fabrizioromano_tweets.csv"
+                "data/elonmusk_tweets.csv", 
+                "/app/data/elonmusk_tweets.csv",
+                "../data/elonmusk_tweets.csv"
             ]:
                 if os.path.exists(path):
                     print(f"Found at: {path}")
