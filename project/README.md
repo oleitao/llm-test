@@ -1,18 +1,18 @@
 <div align="center">
   
-# Pedro Leitão AI Chatbot
+# Elon Musk AI Chatbot
 
 <img src="/AI%20image.webp" alt="Chatbot Image" width="200" />
 
 </div>
 
-#### Evaluation of Q&A System using Pedro Leitão Tweets
+#### Evaluation of Q&A System using Elon Musk Tweets
 
 Evaluations can be found in [The Jupyter Notebook](./notebooks/main.ipynb)
 
 ## Problem Description
 
-The project is a question-answering (Q&A) system using Pedro Leitão tweets, allowing users to ask football-related questions and retrieve relevant tweets to provide answers using a language model (LLM). The project solves the problem of retrieving football information from a specific dataset of scraped tweets. **The tweets were scraped by me from twitter**
+The project is a question-answering (Q&A) system using Elon Muk tweets (https://www.kaggle.com/datasets/kulgen/elon-musks-tweets), allowing users to ask football-related questions and retrieve relevant tweets to provide answers using a language model (LLM). The project solves the problem of retrieving football information from a specific dataset of scraped tweets. **The tweets were scraped by me from twitter**
 
 ### RAG Flow
 
@@ -52,7 +52,7 @@ The Project is built using Streamlit as the Interface
 
 ## Ingestion Pipeline
 
-A python script is used to read the csv file of scraped tweets from the [/data folder](./data/fabrizioromano_tweets.csv). The dataset is loaded into a pandas DataFrame in the notebook, and documents are then ingested into LanceDB and also Minisearch in the notebook.
+A python script is used to read the csv file of scraped tweets from the [/data folder](./data/elonmusk_tweets.csv). The dataset is loaded into a pandas DataFrame in the notebook, and documents are then ingested into LanceDB and also Minisearch in the notebook.
 
 
 ## Containerization
@@ -113,7 +113,7 @@ Ensure you have Docker and Docker Compose installed:
 
 4. Open your browser and visit `http://localhost:8501` to interact with the application.
 
-   You can start asking questions, and the application will provide answers using Retrieval-Augmented Generation with data from Fabrizio Romano's Twitter page. Additionally, you can rate the responses and provide feedback that is stored in MongoDB.
+   You can start asking questions, and the application will provide answers using Retrieval-Augmented Generation with data from Elon Musk's Twitter page. Additionally, you can rate the responses and provide feedback that is stored in MongoDB.
 
 5. To stop the application, press `CTRL+C` in your terminal, and then run:
 
@@ -230,7 +230,7 @@ If you encounter any issues, make sure all dependencies are installed correctly 
 
 ---
 
-These files work together to create a full-stack RAG application that retrieves Fabrizio Romano's tweets, provides answers using the Groq LLM, and collects user feedback. The app can be run either with Docker (for a fully containerized setup) or without Docker (locally using Python and MongoDB).
+These files work together to create a full-stack RAG application that retrieves Elon Musk's tweets, provides answers using the Groq LLM, and collects user feedback. The app can be run either with Docker (for a fully containerized setup) or without Docker (locally using Python and MongoDB).
 
 
 API KEY: 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
