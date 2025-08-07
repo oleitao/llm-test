@@ -51,7 +51,37 @@ def initialize_database():
             csv_path = get_resource_path("data/elonmusk_tweets.csv")
             print(f"Loading data from: {csv_path}")
             
-            tweets_df = pd.read_csv(csv_path)
+            # Try different encodings to handle special characters
+            try:
+                tweets_df = pd.read_csv(csv_path, encoding='utf-8')
+            except UnicodeDecodeError:
+                print("UTF-8 failed, trying latin-1 encoding...")
+                try:
+                    tweets_df = pd.read_csv(csv_path, encoding='latin-1')
+                except UnicodeDecodeError:
+                    print("Latin-1 failed, trying with error handling...")
+                    tweets_df = pd.read_csv(csv_path, encoding='utf-8', errors='replace')
+            
+            # Clean text data to handle any remaining encoding issues
+            def clean_text(text):
+                if pd.isna(text):
+                    return ""
+                # Convert to string and normalize unicode
+                text = str(text)
+                # Replace non-breaking spaces and other problematic characters
+                text = text.replace('\xa0', ' ')  # non-breaking space
+                text = text.replace('\u2026', '...')  # ellipsis
+                text = text.replace('\u2019', "'")  # right single quotation mark
+                text = text.replace('\u201c', '"')  # left double quotation mark
+                text = text.replace('\u201d', '"')  # right double quotation mark
+                # Remove any remaining non-printable characters
+                text = ''.join(char for char in text if char.isprintable() or char.isspace())
+                return text.strip()
+            
+            # Apply text cleaning to all string columns
+            for col in tweets_df.columns:
+                if tweets_df[col].dtype == 'object':
+                    tweets_df[col] = tweets_df[col].apply(clean_text)
             data = tweets_df.apply(
                 lambda row: {
                     "tweet_count": row["tweet_count"],
