@@ -71,6 +71,28 @@ api_key = st.sidebar.text_input(f"Enter {llm_choice} API Key:", type="password")
 
 with st.spinner("Setting up the database. This may take 3-6 minutes..."):
     try:
+        # Try importing sentence_transformers first to catch this specific error
+        try:
+            import sentence_transformers
+        except ImportError:
+            st.error("Missing required package: sentence-transformers")
+            st.warning("""
+            The sentence-transformers package is required but not installed.
+            If you're running this in Docker, make sure your Dockerfile includes:
+            
+            ```
+            RUN pip install sentence-transformers==2.2.2
+            ```
+            
+            If running locally, install with:
+            
+            ```
+            pip install sentence-transformers==2.2.2
+            ```
+            """)
+            st.stop()
+            
+        # Initialize the database
         initialize_database()
     except Exception as e:
         st.error(f"Failed to initialize database: {str(e)}")

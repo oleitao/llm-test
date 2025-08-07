@@ -5,6 +5,7 @@ import lancedb
 from lancedb.pydantic import LanceModel, Vector
 from lancedb.embeddings import get_registry
 from pathlib import Path
+import sys
 
 load_dotenv()
 
@@ -14,7 +15,23 @@ table_name = os.getenv("LANCEDB_TABLE", "tweets")
 # Convert string path to Path object
 db_path = Path(db_path_str)
 
-model = get_registry().get("sentence-transformers").create(name="all-mpnet-base-v2")
+# Verify sentence-transformers is installed
+try:
+    # Try to import before proceeding
+    import sentence_transformers
+    print("Successfully imported sentence_transformers module")
+except ImportError:
+    print("ERROR: sentence-transformers package not found!")
+    print("Please install it with: pip install sentence-transformers==2.2.2")
+    sys.exit(1)
+
+try:
+    model = get_registry().get("sentence-transformers").create(name="all-mpnet-base-v2")
+except Exception as e:
+    print(f"ERROR initializing sentence-transformers model: {str(e)}")
+    print("This could be because sentence-transformers is not correctly installed.")
+    print("Try running: pip install -U sentence-transformers==2.2.2")
+    raise
 
 class TweetDocument(LanceModel):
     tweet_count: int
