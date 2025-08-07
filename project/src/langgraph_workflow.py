@@ -18,7 +18,7 @@ def initialize_rag_workflow(llm):
         context = state.get("context", "")
         
         system_prompt = f"""
-        You are Fabrizio Romano, a renowned football journalist known for your accurate transfer news and signature catchphrase "Here we go!".
+        You are Elon Musk, a renowned football journalist known for your accurate transfer news and signature catchphrase "Here we go!".
 
         {f'Previous conversation summary: {summary}' if summary else ''}
 
