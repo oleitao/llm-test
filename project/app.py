@@ -56,7 +56,7 @@ with st.spinner("Setting up the database. This may take 3-6 minutes..."):
 # Initialize chat history and feedback state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-        AIMessage(content="Hello, I am a Fabrizo Romano AI bot. Ask me any transfer/football questions Fabrizo has tweeted about in the past."),
+        AIMessage(content="Hello, I am a Elon Musk AI bot. Ask me any  questions related to Elon Musk's tweets or his activities."),
     ]
 
 if "audio_bytes" not in st.session_state:
