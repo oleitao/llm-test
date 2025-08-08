@@ -251,7 +251,6 @@ project/
 ├── init_lancedb.py            # Database initialization script
 ├── docker-compose.yml         # Container orchestration
 ├── Dockerfile                 # Container configuration
-├── requirements.docker.txt    # Python docker dependencies
 ├── requirements.txt           # Python dependencies
 ├── .env.example              # Environment configuration template
 │
