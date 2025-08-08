@@ -36,13 +36,10 @@ def feedback_cb():
             st.toast("Error saving feedback", icon="🚨")
             print(f"Error storing feedback: {str(e)}")
 
-from utils.image_loader import load_header_image_advanced
-
 audio_response = "audio_response.mp3"
 audio_query = "audio_query.wav"
 
-# Load header image with multiple fallback strategies
-load_header_image_advanced()
+st.image("header.jpg", use_container_width=True)
 st.title("Elon Musk Q&A AI Chatbot")
 
 # Set up LLM choice
