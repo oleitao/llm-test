@@ -42,7 +42,7 @@ This project implements a sophisticated **Retrieval-Augmented Generation (RAG)**
 
 ## Dataset Information
 
-The project utilizes a comprehensive dataset of **Elon Musk's tweets** sourced from [Kaggle](https://www.kaggle.com/datasets/kulgen/elon-musks-tweets), containing over 3,000 tweets with metadata including:
+The project utilizes a comprehensive dataset of **Elon Musk's tweets** sourced from [Kaggle](https://www.kaggle.com/datasets/kulgen/elon-musks-tweets), containing over 55000 tweets with metadata including:
 - Tweet content and timestamps
 - Tweet IDs and URLs for reference
 - User engagement metrics
@@ -462,7 +462,7 @@ mypy src/
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ### Acknowledgments
-- **Dataset**: [Elon Musk's Tweets Dataset](https://www.kaggle.com/datasets/kulgen/elon-musks-tweets)
+- **Dataset**: [Elon Musk Tweets 2010 to 2025 (April)](https://www.kaggle.com/datasets/dadalyndell/elon-musk-tweets-2010-to-2025-march)
 - **Technologies**: LanceDB, LangChain, Streamlit, OpenLIT
 - **Models**: Sentence Transformers, Cross-encoder models
 - **Community**: DataTalks.Club for inspiration and guidance
